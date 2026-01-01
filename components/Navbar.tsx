@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Language } from '../types/index.ts';
 
 interface NavbarProps {
@@ -9,6 +9,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ currentLang, onLanguageChange, t }) => {
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const brandUrl = "https://theartdancestudio1120.netlify.app/#dancers";
 
   const languages: { code: Language; label: string }[] = [
@@ -18,54 +19,118 @@ const Navbar: React.FC<NavbarProps> = ({ currentLang, onLanguageChange, t }) => 
     { code: 'zh', label: '简体中文' },
   ];
 
-  return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-black flex items-center justify-between px-6 md:px-12 py-5">
-      <div className="flex items-center gap-12">
-        <a href={brandUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">THEART</a>
-        
-        <div className="hidden lg:flex items-center gap-8 text-[11px] font-black tracking-widest uppercase">
-          <a href="#" className="hover:opacity-50 transition-opacity">{t.nav.dancers}</a>
-          <a href="#" className="hover:opacity-50 transition-opacity">{t.nav.classes}</a>
-          <a href="#" className="hover:opacity-50 transition-opacity">{t.nav.store}</a>
-        </div>
-      </div>
+  // Disable body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isMobileMenuOpen]);
 
-      <div className="flex items-center gap-6 text-[11px] font-black tracking-widest uppercase relative">
-        <div className="relative">
+  const navLinks = [
+    { label: t.nav.dancers, href: "#dancers" },
+    { label: t.nav.classes, href: "#classes" },
+    { label: t.nav.store, href: "#store" },
+    { label: t.nav.about, href: "#about" },
+  ];
+
+  return (
+    <>
+      <nav className="sticky top-0 z-[60] bg-white border-b border-black flex items-center justify-between px-6 md:px-12 py-5">
+        <div className="flex items-center gap-12">
+          <a href={brandUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">THEART</a>
+          
+          <div className="hidden lg:flex items-center gap-8 text-[11px] font-black tracking-widest uppercase">
+            {navLinks.map((link) => (
+              <a key={link.label} href={link.href} className="hover:opacity-50 transition-opacity">{link.label}</a>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-6 text-[11px] font-black tracking-widest uppercase relative">
+          <div className="relative">
+            <button 
+              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+              className="hover:opacity-50 transition-opacity flex items-center gap-1 font-black"
+            >
+              {languages.find(l => l.code === currentLang)?.label}
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className={`transition-transform ${isLangMenuOpen ? 'rotate-180' : ''}`}>
+                <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            {isLangMenuOpen && (
+              <div className="absolute top-full right-0 mt-4 bg-white border border-black shadow-xl py-2 w-40 animate-in fade-in slide-in-from-top-2 duration-200 z-[70]">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      onLanguageChange(lang.code);
+                      setIsLangMenuOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-2 hover:bg-black hover:text-white transition-colors flex items-center justify-between ${currentLang === lang.code ? 'bg-gray-100' : ''}`}
+                  >
+                    <span>{lang.label}</span>
+                    {currentLang === lang.code && <div className="w-1.5 h-1.5 bg-black rounded-full" />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <button 
-            onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-            className="hover:opacity-50 transition-opacity flex items-center gap-1 font-black"
+            className="lg:hidden p-2"
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open menu"
           >
-            {languages.find(l => l.code === currentLang)?.label}
-            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className={`transition-transform ${isLangMenuOpen ? 'rotate-180' : ''}`}>
-              <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="24" height="2" fill="black"/>
+              <rect y="8" width="24" height="2" fill="black"/>
+              <rect y="16" width="24" height="2" fill="black"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[100] bg-black text-white p-6 md:p-12 flex flex-col justify-center animate-in slide-in-from-right duration-500">
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="absolute top-8 right-8 p-4 hover:scale-110 transition-transform"
+            aria-label="Close menu"
+          >
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 8L24 24" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+              <path d="M24 8L8 24" stroke="white" strokeWidth="3" strokeLinecap="round"/>
             </svg>
           </button>
 
-          {isLangMenuOpen && (
-            <div className="absolute top-full right-0 mt-4 bg-white border border-black shadow-xl py-2 w-40 animate-in fade-in slide-in-from-top-2 duration-200">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => {
-                    onLanguageChange(lang.code);
-                    setIsLangMenuOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-2 hover:bg-black hover:text-white transition-colors flex items-center justify-between ${currentLang === lang.code ? 'bg-gray-100' : ''}`}
+          <div className="space-y-8">
+            <h2 className="text-[14px] font-black tracking-[0.4em] opacity-40 uppercase mb-4">Navigation</h2>
+            <div className="flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <a 
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-5xl md:text-7xl font-black tracking-tighter uppercase hover:italic transition-all duration-300"
                 >
-                  <span>{lang.label}</span>
-                  {currentLang === lang.code && <div className="w-1.5 h-1.5 bg-black rounded-full" />}
-                </button>
+                  {link.label}
+                </a>
               ))}
             </div>
-          )}
-        </div>
+          </div>
 
-        <button className="lg:hidden">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        </button>
-      </div>
-    </nav>
+          <div className="mt-20 flex flex-col gap-2">
+            <p className="text-[12px] font-black uppercase tracking-widest opacity-40">Location</p>
+            <p className="text-xl font-bold italic tracking-tight uppercase">Jeollabuk-do, Jeonju</p>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

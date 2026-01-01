@@ -34,7 +34,7 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
           <p className="text-lg font-black mt-2">DANCE STUDIO</p>
           <p className="text-lg font-black uppercase tracking-wider">{t.footer.seoul}</p>
         </a>
-        <p className="text-sm font-black mt-6">+82 2 123 4567</p>
+        <p className="text-sm font-black mt-6">+82 63 123 4567</p>
         <p className="text-sm font-black mb-8">theart1120@naver.com</p>
         
         <div className="flex gap-4">
@@ -52,7 +52,7 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
           <span>(주)디아트</span>
           <span>사업자등록번호: 123-45-67890</span>
           <span>대표이사: 홍길동</span>
-          <span>주소: 서울특별시 강남구 테헤란로 123</span>
+          <span>주소: 전라북도 전주시 덕진구 권삼득로 123</span>
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import { Language, Translations } from '../types/index.ts';
 
 export const translations: Record<Language, Translations> = {
   en: {
-    nav: { dancers: 'Dancers', classes: 'Types of Classes', store: 'Store' },
+    nav: { dancers: 'Dancers', classes: 'Types of Classes', store: 'Store', about: 'About' },
     hero: { subtitle: 'Dance Studio & Creative Collective' },
     app: {
       banner: 'Find your perfect class today',
@@ -28,11 +28,11 @@ export const translations: Record<Language, Translations> = {
       about: 'About Studio',
       faq: 'FAQ',
       contact: 'Contact Us',
-      seoul: 'SEOUL'
+      seoul: 'JEONJU'
     }
   },
   ko: {
-    nav: { dancers: '댄서', classes: '수업 종류', store: '스토어' },
+    nav: { dancers: '댄서', classes: '수업 종류', store: '스토어', about: '소개' },
     hero: { subtitle: '댄스 스튜디오 & 크리에이티브 컬렉티브' },
     app: {
       banner: '오늘 당신에게 맞는 완벽한 수업을 찾아보세요',
@@ -58,11 +58,11 @@ export const translations: Record<Language, Translations> = {
       about: '스튜디오 소개',
       faq: '자주 묻는 질문',
       contact: '문의하기',
-      seoul: '서울'
+      seoul: '전주'
     }
   },
   ja: {
-    nav: { dancers: 'ダンサー', classes: 'クラスの種類', store: 'ストア' },
+    nav: { dancers: 'ダンサー', classes: 'クラスの種類', store: 'ストア', about: '紹介' },
     hero: { subtitle: 'ダンススタジオ & クリエイティブ・コレクティブ' },
     app: {
       banner: '今日、あなたにぴったりのクラスを見つけよう',
@@ -74,10 +74,10 @@ export const translations: Record<Language, Translations> = {
     },
     faq: {
       q1: "誰でも受講できますか？", a1: "はい、当スタジオは年齢やスキルを問わず、すべてのダンサーを歓迎します。誰もが踊れると信じています。",
-      q3: "クラス의レベル分けは？", a3: "当スタジオ의クラスは、趣味クラス、予備専門クラス、専門クラスに分かれています。趣味クラスは誰でも自由に受講でき、予備専門クラスは趣味クラスよりも体系的で専門的なトレーニングを提供します。専門クラスは、THEART独自のオーディションに合格した選抜メンバーのみ受講可能です。",
+      q3: "クラス의レベル分けは？", a3: "当スタジオ의クラスは、趣味クラス、予備専門クラス、専門クラスに分かれています。趣味クラスは誰でも自由に受講でき、予備専門クラスは趣味クラスよりも体系적이고専門的なトレーニングを提供します。専門クラスは、THEART独自のオーディションに合格した選抜メンバーのみ受講可能です。",
       q4: "その他の問い合わせ", a4: "コラボレーションやレンタル、企業ワークショップは、フォームまたは theart1120@naver.com までご連絡ください。",
       q5: "受講方法は？", a5: "毎月第1週目に新しい曲でレッスンを開始します。毎月最初のレッスンは無料体験が可能で、体験レッスン後に登録が可能です。",
-      q7: "受講料はいくらですか？", a7: "趣味クラス：月150,000ウォン（8回）、予備専門クラス：月250,000ウォン、専門クラス：月350,000ウォンです。",
+      q7: "受講료はいくらですか？", a7: "趣味クラス：月150,000ウォン（8回）、予備専門クラス：月250,000ウォン、専門クラス：月350,000ウォンです。",
       q9: "どんなジャンルがありますか？", a9: "K-POP、コレオグラフィー、ソウル、ポッピン、コンテンポラリー、ヒップホップなど、多様なジャンルを専門的に教育しています。",
     },
     footer: {
@@ -88,11 +88,11 @@ export const translations: Record<Language, Translations> = {
       about: 'スタジオについて',
       faq: 'よくある質問',
       contact: 'お問い合わせ',
-      seoul: 'ソウル'
+      seoul: '全州'
     }
   },
   zh: {
-    nav: { dancers: '舞者', classes: '课程种类', store: '商店' },
+    nav: { dancers: '舞者', classes: '课程种类', store: '商店', about: '关于' },
     hero: { subtitle: '舞蹈工作室与创意集体' },
     app: {
       banner: '今天就寻找适合您的完美课程',
@@ -105,7 +105,7 @@ export const translations: Record<Language, Translations> = {
     faq: {
       q1: "所有人都可以参加吗？", a1: "是的，我们的工作室欢迎任何背景、年龄和水平 of 舞者。我们相信每个人都可以跳舞。",
       q3: "课程等级如何划分？", a3: "我们的课程分为兴趣班、预备专业班和专业班。兴趣班向所有人开放；预备专业班提供比兴趣班更系统、更专业的训练；专业班则仅限通过 THEART 内部试镜选拔的学员参加。",
-      q4: "其他咨询", a4: "如需合作、场地租赁或企业研讨会，请通过表格 or 发送邮件至 theart1120@naver.com 联系我们。",
+      q4: "其他咨询", a4: "如需合作、场地租赁 or 创业研讨会，请通过表格 or 发送邮件至 theart1120@naver.com 联系我们。",
       q5: "如何参加课程？", a5: "每月第一周将使用新曲目开始授课。每月第一节课提供免费体验，体验课后即可办理注册。",
       q7: "学费是多少？", a7: "兴趣班：每月150,000韩元（8次），预备专业班：每月250,000韩元，专业班：每月350,000韩元。",
       q9: "教授哪些舞蹈风格？", a9: "我们提供 K-POP、编舞、灵魂舞、震感舞、现代舞、嘻哈等多种流派의专业培训。",
@@ -118,7 +118,7 @@ export const translations: Record<Language, Translations> = {
       about: '关于工作室',
       faq: '常见问题',
       contact: '联系我们',
-      seoul: '首尔'
+      seoul: '全州'
     }
   }
 };

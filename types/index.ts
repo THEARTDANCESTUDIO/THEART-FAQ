@@ -5,6 +5,7 @@ export interface Translations {
     dancers: string;
     classes: string;
     store: string;
+    about: string;
   };
   hero: {
     subtitle: string;
