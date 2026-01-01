@@ -6,6 +6,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ t }) => {
   const brandUrl = "https://theartdancestudio1120.netlify.app/#dancers";
+  const dancersUrl = "https://kaleidoscopic-moxie-80c5dc.netlify.app";
 
   return (
     <footer className="bg-white pt-24 pb-12 px-6 md:px-12">
@@ -14,8 +15,7 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
           <h4 className="text-[10px] font-black uppercase tracking-[0.2em] mb-6 opacity-40 text-gray-500">{t.footer.class}</h4>
           <ul className="space-y-3 text-[13px] font-bold">
             <li><a href="#" className="hover:underline">{t.footer.schedule}</a></li>
-            <li><a href="#" className="hover:underline">{t.footer.buyTicket}</a></li>
-            <li><a href="#" className="hover:underline">Dancers</a></li>
+            <li><a href={dancersUrl} className="hover:underline">Dancers</a></li>
           </ul>
         </div>
         <div className="flex-1">
@@ -34,7 +34,7 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
           <p className="text-lg font-black mt-2">DANCE STUDIO</p>
           <p className="text-lg font-black uppercase tracking-wider">{t.footer.seoul}</p>
         </a>
-        <p className="text-sm font-black mt-6">+82 63 123 4567</p>
+        <p className="text-sm font-black mt-6">+82 10 9584 9901</p>
         <p className="text-sm font-black mb-8">theart1120@naver.com</p>
         
         <div className="flex gap-4">
@@ -49,15 +49,15 @@ const Footer: React.FC<FooterProps> = ({ t }) => {
 
       <div className="border-t border-black pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex flex-wrap justify-center gap-4 text-[10px] font-bold opacity-60">
-          <span>(주)디아트</span>
-          <span>사업자등록번호: 123-45-67890</span>
-          <span>대표이사: 홍길동</span>
-          <span>주소: 전라북도 전주시 덕진구 권삼득로 123</span>
+          <span>(주)디아트댄스스튜디오</span>
+          <span>사업자등록번호: 101-36-97199</span>
+          <span>대표이사: 이광명</span>
+          <span>주소: 전북특별자치도 완주군 이서면 기지로 50 케이빌딩3층 디아트댄스스튜디오</span>
         </div>
       </div>
 
       <div className="mt-8 text-center text-[10px] font-bold opacity-30">
-        © 2024 THEART DANCE Inc. All Rights Reserved. Terms of Use Privacy Policy
+        © 2017 THEART DANCE Inc. All Rights Reserved. Terms of Use Privacy Policy
       </div>
     </footer>
   );

@@ -11,8 +11,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentLang, onLanguageChange, t }) => 
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  // Use a relative or configurable URL for internal navigation
-  const brandUrl = "#top";
+  // Updated URL as requested by the user
+  const brandUrl = "https://theartdancestudio1120.netlify.app";
+  const dancersUrl = "https://kaleidoscopic-moxie-80c5dc.netlify.app";
 
   const languages: { code: Language; label: string }[] = [
     { code: 'en', label: 'English' },
@@ -31,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentLang, onLanguageChange, t }) => 
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { label: t.nav.dancers, href: "#dancers" },
+    { label: t.nav.dancers, href: dancersUrl },
     { label: t.nav.classes, href: "#classes" },
     { label: t.nav.store, href: "#store" },
     { label: t.nav.about, href: "#about" },

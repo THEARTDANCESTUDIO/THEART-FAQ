@@ -30,7 +30,6 @@ export interface Translations {
     class: string;
     info: string;
     schedule: string;
-    buyTicket: string;
     about: string;
     faq: string;
     contact: string;
