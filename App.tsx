@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import FAQSection from './components/FAQSection';
-import Footer from './components/Footer';
-import GeminiAssistant from './components/GeminiAssistant';
-import { translations } from './constants/translations';
-import { Language } from './types';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
+import FAQSection from './components/FAQSection.tsx';
+import Footer from './components/Footer.tsx';
+import GeminiAssistant from './components/GeminiAssistant.tsx';
+import { translations } from './constants/translations.ts';
+import { Language } from './types/index.ts';
 
 const App: React.FC = () => {
   const [currentLang, setCurrentLang] = useState<Language>('en');

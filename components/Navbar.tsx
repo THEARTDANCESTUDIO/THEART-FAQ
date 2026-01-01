@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Language } from '../types';
+import { Language } from '../types/index.ts';
 
 interface NavbarProps {
   currentLang: Language;

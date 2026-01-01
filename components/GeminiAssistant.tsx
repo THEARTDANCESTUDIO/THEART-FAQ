@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI } from "@google/genai";
-import { Language } from '../types';
+import { Language } from '../types/index.ts';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -38,17 +38,18 @@ const GeminiAssistant: React.FC<GeminiAssistantProps> = ({ onClose, language }) 
 
     const userMsg = input.trim();
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
+    const newMessages: Message[] = [...messages, { role: 'user', content: userMsg }];
+    setMessages(newMessages);
     setIsLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
-        contents: [
-          ...messages.map(m => ({ parts: [{ text: m.content }] })),
-          { parts: [{ text: userMsg }] }
-        ],
+        contents: newMessages.map(m => ({
+          role: m.role === 'assistant' ? 'model' : 'user',
+          parts: [{ text: m.content }]
+        })),
         config: {
           systemInstruction: `You are 'Artie', a professional dance consultant at THEART DANCE STUDIO in Seoul. 
           Respond in the language the user is speaking (${language}).
