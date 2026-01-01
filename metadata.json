@@ -1,0 +1,8 @@
+{
+  "name": "THEAR FAQ",
+  "description": "A high-end, minimalist dance studio landing page inspired by modern urban dance cultures, featuring AI-powered class recommendations.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
