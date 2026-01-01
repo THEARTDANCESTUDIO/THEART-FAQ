@@ -1,6 +1,6 @@
 {
-  "name": "THEAR FAQ",
-  "description": "A high-end, minimalist dance studio landing page inspired by modern urban dance cultures, featuring AI-powered class recommendations.",
+  "name": "THEART DANCE STUDIO",
+  "description": "High-end minimalist dance studio platform based in Jeonju, featuring AI-driven class consultations.",
   "requestFramePermissions": [
     "camera",
     "microphone"

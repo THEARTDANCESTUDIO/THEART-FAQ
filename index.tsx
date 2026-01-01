@@ -1,18 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
 
-// Polyfill for environments missing process to prevent crashes
+// Immediate polyfill for environment variables
 if (typeof window !== 'undefined') {
   (window as any).process = (window as any).process || { env: {} };
 }
 
+import App from './App.tsx';
+
 const rootElement = document.getElementById('root');
+
 if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
+  const div = document.createElement('div');
+  div.id = 'root';
+  document.body.appendChild(div);
 }
 
-const root = ReactDOM.createRoot(rootElement);
+const container = document.getElementById('root')!;
+const root = ReactDOM.createRoot(container);
+
 root.render(
   <React.StrictMode>
     <App />
